@@ -1,16 +1,16 @@
 const express = require('express');
 
-const routes = express.Router()
+const bookController = require('./controllers/BookController');
+
+const routes = express.Router();
 
 // Rotas: GET/ POST/ PUT/ DELETE
 
-routes.get('/', (req, res) =>{
-    return res.json({idade: 25});
-})
+routes.get('/books', bookController.index);
+routes.get('/books/:id', bookController.show);
+routes.post('/books', bookController.store);
+routes.put('/books/:id', bookController.update);
+routes.delete('/books/:id', bookController.destroy);
 
-
-routes.post('/', (req, res) =>{
-    return res.json(req.body);
-})
 
 module.exports = routes;
